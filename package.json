@@ -13,7 +13,8 @@
     "form",
     "captcha",
     "recaptcha",
-    "input",
+    "form_captcha",
+    "form_recaptcha",
     "validation"
   ],
   "license": "ISC",
