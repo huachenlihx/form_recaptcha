@@ -1,6 +1,6 @@
 {
   "name": "form_recaptcha",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "CAPTCHA for forms",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,6 +9,13 @@
     "build": "tsc"
   },
   "author": "Hua Chen",
+  "keywords": [
+    "form",
+    "captcha",
+    "recaptcha",
+    "input",
+    "validation"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.9",
