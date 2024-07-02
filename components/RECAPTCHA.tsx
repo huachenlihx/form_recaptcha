@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const getCode = (): string => Math.floor(Math.random() * 1_000_000).toString();
+const getCode = () => Math.floor(Math.random() * 1_000_000).toString();
 
 const randomColor = () => {
   let red = Math.floor(Math.random() * 256);
@@ -29,7 +29,7 @@ const RECAPTCHA = ({codeValue, setCodeValue}: {codeValue: string, setCodeValue: 
 
       // insert code
       context.font = "bold 28px Arial";
-      context.letterSpacing = '3px';
+      // context.letterSpacing = '3px';
       context.fillText(codeValue, 15, 25);
 
       // insert lines
@@ -58,7 +58,17 @@ const RECAPTCHA = ({codeValue, setCodeValue}: {codeValue: string, setCodeValue: 
   return (
     <div style={{display: 'flex'}}>
     <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight}></canvas>
-    <button type='button' onClick={()=>{setCodeValue(getCode())}}>New Captcha</button>
+    <button
+      type='button'
+      onClick={()=>{setCodeValue(getCode())}}
+      style= {{
+        backgroundColor: 'white',
+        color: 'black',
+        border: '1px solid #04AA6D',
+        borderRadius: '8px',
+        padding: '2px',
+      }}
+      >New Captcha</button>
     </div>
   )
 }
