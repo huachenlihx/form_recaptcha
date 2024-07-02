@@ -9,7 +9,7 @@ const randomColor = () => {
   return "rgb(" + red + "," + green + "," + blue + ")";
 }
 
-const canvasWidth = 150;
+const canvasWidth = 160;
 const canvasHeight = 30;
 
 const RECAPTCHA = ({codeValue, setCodeValue}: {codeValue: string, setCodeValue: Function}) =>{
@@ -30,7 +30,7 @@ const RECAPTCHA = ({codeValue, setCodeValue}: {codeValue: string, setCodeValue: 
       // insert code
       context.font = "bold 28px Arial";
       // context.letterSpacing = '3px';
-      context.fillText(codeValue, 15, 25);
+      context.fillText(codeValue.split('').join(String.fromCharCode(8202)), 15, 25);
 
       // insert lines
       for (let i = 0; i <= 15; i++) {
