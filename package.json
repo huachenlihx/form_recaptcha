@@ -1,14 +1,15 @@
 {
   "name": "form_recaptcha",
   "version": "1.0.15",
-  "description": "CAPTCHA for forms",
+  "description": "Accessible visual CAPTCHA component for React and Next.js forms",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest run",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit -p tsconfig.build.json"
   },
   "author": "Hua Chen",
   "keywords": [
@@ -24,15 +25,16 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20.14.9",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@vitest/coverage-v8": "^4.1.11",
     "jsdom": "^27.0.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.0.0",
     "typescript": "^5.5.2",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.11",
+    "react": "^19.0.0"
   },
-  "dependencies": {
-    "react": "^18.3.1"
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0"
   }
 }

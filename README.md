@@ -14,8 +14,8 @@ A simple CAPTCHA component for Next.js / React forms, written in TypeScript.
 
 ## Requirements
 
-- React 18+
-- Next.js (or any React 18 app)
+- React 18.3.1+ or React 19 (peer dependency)
+- A compatible React or Next.js application
 
 ## Installation
 
@@ -61,6 +61,7 @@ git clone https://github.com/huachenlihx/form_recaptcha.git
 cd form_recaptcha
 npm install
 npm test        # runs React component unit tests
+npm run typecheck # check component TypeScript types
 npm run build   # compiles TypeScript to dist/
 ```
 
@@ -95,6 +96,12 @@ Commit the refreshed lockfile alongside `package.json` for reproducible installs
 These are component unit tests, not an accessibility audit or a guarantee that
 client-side CAPTCHA alone can prevent automated submissions. Actual bot
 protection requires trusted server-side validation.
+
+## React 19 development and React 18 compatibility
+
+The package supports React `^18.3.1 || ^19.0.0` as a **peer dependency**. Local development and Vitest tests use React 19 and React DOM 19; the published package does not install its own React copy. React DOM is a development-only dependency for browser-based component tests.
+
+Run `npm install` to refresh `package-lock.json` after upgrading. Verify with `npm ls react react-dom`, `npm test`, `npm run typecheck`, and `npm run build`. Before claiming validated React 18 compatibility, test the built component in a separate React 18 consumer application. No new npm release is published by this source archive.
 
 ## Accessibility (WCAG 2.2)
 
