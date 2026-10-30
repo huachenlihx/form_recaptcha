@@ -3,13 +3,14 @@
 A simple CAPTCHA component for Next.js / React forms, written in TypeScript.
 
 [![npm version](https://img.shields.io/npm/v/form_recaptcha.svg)](https://www.npmjs.com/package/form_recaptcha)
-[![license](https://img.shields.io/npm/l/form_recaptcha.svg)](#license)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license)
 
 ## Features
 
 - Drop-in React component for Next.js forms
 - Written in TypeScript, with bundled type declarations
 - Controlled component: the CAPTCHA value lives in your own React state
+- Labeled canvas, keyboard-operable refresh button, and polite refresh announcements
 
 ## Requirements
 
@@ -80,7 +81,7 @@ Tests cover:
 
 ```bash
 npm install           # installs test dependencies; refreshes package-lock.json
-npm test              # run the seven component tests once
+npm test              # run the nine component tests once
 npm run test:watch    # watch files and rerun tests
 npm run test:coverage # generate a local coverage/ report
 npm run build         # compile the published component
@@ -95,6 +96,14 @@ These are component unit tests, not an accessibility audit or a guarantee that
 client-side CAPTCHA alone can prevent automated submissions. Actual bot
 protection requires trusted server-side validation.
 
+## Accessibility (WCAG 2.2)
+
+The component includes accessibility-oriented enhancements: a descriptive accessible name for the canvas (without disclosing the CAPTCHA answer), readable instructions, a keyboard-operable 44px minimum refresh control, and a screen-reader announcement on refresh. The test suite includes accessibility assertions.
+
+**Important limitation:** This is still an image-based visual challenge. It cannot independently satisfy WCAG 2.2 criterion **1.1.1 Non-text Content** for CAPTCHA, which requires alternatives accommodating different sensory abilities. The containing form must provide an **equivalent accessible verification path** (for example, an accessible server-validated verification method) and clear instructions for using it. Merely labeling the canvas does not make its characters available to screen readers. See [ACCESSIBILITY.md](ACCESSIBILITY.md).
+
+This work targets applicable accessibility requirements; it is **not a claim of full WCAG 2.2 AA conformance**.
+
 ## Contributing
 
 Issues and pull requests are welcome at
@@ -102,4 +111,4 @@ Issues and pull requests are welcome at
 
 ## License
 
-ISC © Hua Chen
+MIT © 2026 Hua Chen

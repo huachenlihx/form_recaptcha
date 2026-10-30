@@ -82,16 +82,40 @@ describe('RECAPTCHA', () => {
       .mockReturnValue(0.765432);
     render(<ControlledCaptcha />);
     expect(await screen.findByTestId('captcha-code')).toHaveTextContent('123456');
-    fireEvent.click(screen.getByRole('button', { name: 'New Captcha' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Generate a new visual CAPTCHA challenge' }));
     expect(await screen.findByTestId('captcha-code')).toHaveTextContent('765432');
   });
 
   it('uses a non-submit button so it does not submit surrounding forms', () => {
     render(<ControlledCaptcha />);
-    expect(screen.getByRole('button', { name: 'New Captcha' })).toHaveAttribute(
+    expect(screen.getByRole('button', { name: 'Generate a new visual CAPTCHA challenge' })).toHaveAttribute(
       'type',
       'button',
     );
+  });
+
+  it('labels the visual challenge without revealing the solution to screen readers', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.123456);
+    render(<ControlledCaptcha />);
+    const challenge = screen.getByRole('img', {
+      name: 'Visual CAPTCHA challenge containing distorted characters',
+    });
+    expect(challenge).toHaveAttribute('aria-describedby');
+    expect(challenge.getAttribute('aria-label')).not.toContain('123456');
+    expect(screen.getByText(/alternative verification option provided by the form/i)).toBeInTheDocument();
+  });
+
+  it('announces when a challenge is refreshed, without speaking its answer', async () => {
+    render(<ControlledCaptcha />);
+    fireEvent.click(screen.getByRole('button', {
+      name: 'Generate a new visual CAPTCHA challenge',
+    }));
+    const announcement = screen.getByText(
+      'A new visual CAPTCHA challenge has been generated.',
+      { selector: '[role="status"]' },
+    );
+    expect(announcement).toHaveAttribute('aria-live', 'polite');
+    expect(announcement).not.toHaveTextContent(screen.getByTestId('captcha-code').textContent ?? '');
   });
 
   it('does not crash when canvas 2D context is unavailable', () => {
