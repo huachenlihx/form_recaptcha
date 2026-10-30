@@ -5,6 +5,14 @@ A simple CAPTCHA component for Next.js / React forms, written in TypeScript.
 [![npm version](https://img.shields.io/npm/v/form_recaptcha.svg)](https://www.npmjs.com/package/form_recaptcha)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license)
 
+## Demo — Next.js Integration
+
+The screenshot below shows the complete `form_recaptcha` integration demo in a Next.js 16 App Router application using React 19 and TypeScript. It includes CAPTCHA rendering, challenge refresh, answer input, a demo-only comparison workflow, and the diagnostic event log.
+
+![form_recaptcha Canvas CAPTCHA integrated into a Next.js application](https://raw.githubusercontent.com/huachenlihx/form_recaptcha/master/screenshots/captcha-demo.png)
+
+**Security and accessibility:** The demo compares values in the browser for demonstration only; this is not secure bot verification. A production form needs trusted server-side verification and an equivalent accessible alternative for people unable to solve a visual CAPTCHA. The screenshot shows the visual demo, not a complete accessible verification workflow.
+
 ## Features
 
 - Drop-in React component for Next.js forms
